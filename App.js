@@ -7,12 +7,13 @@ import WelcomeScreen from './screens/WelcomeScreen';
 export default class App extends React.Component {
   state = {
     isLoadingComplete: 0,
+    gender: null,
   };
 
 
 
   render() {
-    if (this.state.isLoadingComplete == 0) 
+    if (this.state.isLoadingComplete == 0)  //Splash Screen
     {
       return (  
         <AppLoading
@@ -21,7 +22,7 @@ export default class App extends React.Component {
           onFinish={this._handleFinishLoading}/>
       );
     } 
-    else if (this.state.isLoadingComplete == 1) 
+    else if (this.state.isLoadingComplete == 1) //Gender Select
     {
       return (
         <View>
@@ -29,14 +30,23 @@ export default class App extends React.Component {
         </View>
       );
     }
-    else
+    else if (this.state.isLoadingComplete == 2) //Login
     {
       return (
-        <WelcomeScreen/>
+        <WelcomeScreen parent={this}/>
         // <View style={styles.container}>
         //   {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         //   <AppNavigator />
         // </View>
+      );
+    }
+    else if (this.state.isLoadingComplete == 3)//MainPage
+    {
+      return (
+        <View style={styles.container}>
+          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          <AppNavigator />
+        </View>
       );
     }
   }

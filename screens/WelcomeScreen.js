@@ -49,14 +49,20 @@ export default class HomeScreen extends Component {
 
   selectMale = () => {
       console.log("Male");
+      this.props.parent.setState({ gender: 'Male' });
+      this.props.parent.setState({ isLoadingComplete: 3 });
   }
 
   selectFemale = () => {
       console.log("Female");
+      this.props.parent.setState({ gender: 'Female' });
+      this.props.parent.setState({ isLoadingComplete: 3 });
   }
 
   selectOther = () => {
       console.log("Other");
+      this.props.parent.setState({ gender: 'Other' });
+      this.props.parent.setState({ isLoadingComplete: 3 });
   }
 
 
