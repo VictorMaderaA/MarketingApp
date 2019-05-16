@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 
-export default class HomeScreen extends Component {
+export default class LoginScreen extends Component {
   static navigationOptions = {
     header: null,
   };
@@ -15,15 +15,14 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.titleText}>Welcome.</Text>
-        <Text style={styles.subTitleText}>Are you?</Text>
+        <Text style={styles.titleText}>Sign Up.</Text>
         
         <TouchableOpacity
-            style={styles.roundedButton}
+            style={styles.roundedButtonFaceBook}
             activeOpacity = { .5 }
             onPress={ this.selectMale }
             > 
-                <Text style={styles.buttonText}> Male </Text>
+                <Text style={styles.buttonTextFacebook}> Using Facebook </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -31,7 +30,7 @@ export default class HomeScreen extends Component {
             activeOpacity = { .5 }
             onPress={ this.selectFemale }
             > 
-                <Text style={styles.buttonText}> Female </Text>
+                <Text style={styles.buttonText}> Using Gmail </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -39,7 +38,7 @@ export default class HomeScreen extends Component {
             activeOpacity = { .5 }
             onPress={ this.selectOther }
             > 
-                <Text style={styles.buttonText}> Other </Text>
+                <Text style={styles.buttonText}> Using Phone Number </Text>
         </TouchableOpacity>
 
       </View>
@@ -48,21 +47,15 @@ export default class HomeScreen extends Component {
 
 
   selectMale = () => {
-      console.log("Male");
-      this.props.parent.setState({ gender: 'Male' });
-      this.props.parent.setState({ isLoadingComplete: 4 });
+      this.props.parent.setState({ isLoadingComplete: 3 });
   }
 
   selectFemale = () => {
-      console.log("Female");
-      this.props.parent.setState({ gender: 'Female' });
-      this.props.parent.setState({ isLoadingComplete: 4 });
+      this.props.parent.setState({ isLoadingComplete: 3 });
   }
 
   selectOther = () => {
-      console.log("Other");
-      this.props.parent.setState({ gender: 'Other' });
-      this.props.parent.setState({ isLoadingComplete: 4 });
+      this.props.parent.setState({ isLoadingComplete: 3 });
   }
 
 
@@ -75,6 +68,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff',
   },
+  roundedButtonFaceBook: {
+    marginTop:10,
+    paddingTop:15,
+    paddingBottom:15,
+    marginLeft:20,
+    marginRight:20,
+    marginBottom: 5,
+    backgroundColor:'#1A4C75',
+    borderRadius:30,
+    borderWidth: 2,
+    borderColor: '#1A4C75',
+    width: '65%',
+  },
   roundedButton: {
     marginTop:10,
     paddingTop:15,
@@ -86,22 +92,24 @@ const styles = StyleSheet.create({
     borderRadius:30,
     borderWidth: 2,
     borderColor: '#E7E7E7',
-    width: '50%',
+    width: '65%',
+  },
+  buttonTextFacebook:{
+    color: '#FFF',
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    fontSize: responsiveFontSize(2)
   },
   buttonText:{
-      color: '#F56A6A',
+      color: '#111',
       fontWeight: 'bold',
       alignSelf: 'center',
-      fontSize: responsiveFontSize(3)
+      fontSize: responsiveFontSize(2)
   },
   titleText:{
     color: '#EF3434',
     fontWeight: 'bold',
     fontSize: responsiveFontSize(5),
   },
-  subTitleText:{
-    color: '#020202',
-    fontSize: responsiveFontSize(4),
-  }
 
 });

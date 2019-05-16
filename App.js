@@ -3,6 +3,7 @@ import { Platform, StatusBar, StyleSheet, View, ImageBackground } from 'react-na
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import WelcomeScreen from './screens/WelcomeScreen';
+import LoginScreen from './screens/LoginScreen';
 
 export default class App extends React.Component {
   state = {
@@ -22,7 +23,7 @@ export default class App extends React.Component {
           onFinish={this._handleFinishLoading}/>
       );
     } 
-    else if (this.state.isLoadingComplete == 1) //Gender Select
+    else if (this.state.isLoadingComplete == 1) //Splash 
     {
       return (
         <View>
@@ -33,14 +34,17 @@ export default class App extends React.Component {
     else if (this.state.isLoadingComplete == 2) //Login
     {
       return (
-        <WelcomeScreen parent={this}/>
-        // <View style={styles.container}>
-        //   {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        //   <AppNavigator />
-        // </View>
+        <LoginScreen parent={this}/>
       );
     }
-    else if (this.state.isLoadingComplete == 3)//MainPage
+    else if (this.state.isLoadingComplete == 3)//Gender Select
+    {
+      return (
+        
+        <WelcomeScreen parent={this}/>
+      );
+    }    
+    else if (this.state.isLoadingComplete == 4)//MainPage
     {
       return (
         <View style={styles.container}>
@@ -90,7 +94,7 @@ export default class App extends React.Component {
   _handleFinishLoading = () => { 
     this.setState({ isLoadingComplete: 1 });
     setTimeout(this.showView,
-      5000);
+      3000);
   };
 }
 
