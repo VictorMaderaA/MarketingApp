@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, ImageBackground} from 'react-native';
+import {StyleSheet, View, ImageBackground} from 'react-native';
 import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen';
+import CounterScreen from './screens/CounterScreen';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -35,8 +36,11 @@ export default class App extends Component<Props> {
         <WelcomeScreen parent={this}/>
       );
     }
-    else if (this.state.currWindow == 3)
+    else if (this.state.currWindow == 'timer')
     {
+      return (
+        <CounterScreen parent={this}/>
+      );
     }    
     else if (this.state.currWindow == 4)//MainPage
     {
@@ -45,7 +49,18 @@ export default class App extends Component<Props> {
   }
 
   splashScreenTimer = () => {
-    setTimeout(function(){this.viewChangeLogin()}, 3000);
+    var selectedDate = new Date("June 30, 2019").getTime()
+    var now = new Date();
+
+    if (selectedDate > now) {
+      console.log("Selected date is in the past");
+      setTimeout(function(){this.viewChangeLogin()}.bind(this), 3000);
+    } else {
+      console.log("Selected date is NOT in the past");
+      setTimeout(function(){this.viewChangeTimer()}.bind(this), 3000);
+    }
+
+    
   }
 
   viewChangeLogin = () => {
@@ -58,6 +73,10 @@ export default class App extends Component<Props> {
 
   viewChangeSplash = () => {
     this.setState({ currWindow: 'splash' })
+  }
+
+  viewChangeTimer = () => {
+    this.setState({ currWindow: 'timer' })
   }
 
 
