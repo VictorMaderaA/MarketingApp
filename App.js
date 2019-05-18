@@ -24,7 +24,9 @@ export default class App extends Component<Props> {
     else if (this.state.currWindow == 'login') //Login 
     {
       return (
-        <LoginScreen parent={this}/>
+        <View>
+          <LoginScreen parent={this} style={{width: '100%', height: '100%'}}/>
+        </View>
       );
     }
     else if (this.state.currWindow == 'gender') //Gender Select
@@ -43,7 +45,7 @@ export default class App extends Component<Props> {
   }
 
   splashScreenTimer = () => {
-    setTimeout(() => this.viewChangeLogin(), 3000);
+    setTimeout(function(){this.viewChangeLogin()}, 3000);
   }
 
   viewChangeLogin = () => {

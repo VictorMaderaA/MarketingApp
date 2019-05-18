@@ -57,7 +57,7 @@ export default class LoginScreen extends Component {
   }
 
   nextView = () => {
-    this.props.parent.setState({ currWindow: 'gender' });
+    this.viewChangeGender();
   }
 
 
@@ -68,8 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
-    marginTop: '50%'
+    backgroundColor: '#fff'
   },
   roundedButtonFaceBook: {
     marginTop:10,
