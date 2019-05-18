@@ -1,111 +1,49 @@
-import React from 'react';
-import { Platform, StatusBar, StyleSheet, View, ImageBackground, Text } from 'react-native';
-//import { AppLoading, Asset, Font, Icon } from 'expo';
-import AppNavigator from './navigation/AppNavigator';
-import WelcomeScreen from './screens/WelcomeScreen';
-import LoginScreen from './screens/LoginScreen';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
 
-export default class App extends React.Component {
-  state = {
-    isLoadingComplete: 0,
-    gender: null,
-  };
+import React, {Component} from 'react';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 
+const instructions = Platform.select({
+  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+  android:
+    'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
 
-
+type Props = {};
+export default class App extends Component<Props> {
   render() {
-    if (this.state.isLoadingComplete == 0)  //Splash Screen
-    {
-      return (  
-        // <AppLoading
-        //   startAsync={this._loadResourcesAsync}
-        //   onError={this._handleLoadingError}
-        //   onFinish={this._handleFinishLoading}/>
-        <View>
-          <Text>AYUDAAA</Text>
-        </View>
-      );
-    } 
-    else if (this.state.isLoadingComplete == 1) //Splash 
-    {
-      return (
-        <View>
-          <ImageBackground source={require('./assets/images/splashscreen.png')} style={{width: '100%', height: '100%'}}/>
-        </View>
-      );
-    }
-    else if (this.state.isLoadingComplete == 2) //Login
-    {
-      return (
-        <LoginScreen parent={this}/>
-      );
-    }
-    else if (this.state.isLoadingComplete == 3)//Gender Select
-    {
-      return (
-        
-        <WelcomeScreen parent={this}/>
-      );
-    }    
-    else if (this.state.isLoadingComplete == 4)//MainPage
-    {
-      return (
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
-        </View>
-      );
-    }
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>Welcome to React Native!</Text>
+        <Text style={styles.instructions}>To get started, edit App.js</Text>
+        <Text style={styles.instructions}>{instructions}</Text>
+      </View>
+    );
   }
-
-  // _loadResourcesAsync = async () => {
-  //   return Promise.all(
-  //     // [
-  //     // Asset.loadAsync([
-  //     //   require('./assets/images/robot-dev.png'),
-  //     //   require('./assets/images/robot-prod.png'),
-  //     //   require('./assets/images/splashscreen.png'),
-  //     // ]
-  //     ),
-  //     Font.loadAsync({
-  //       // This is the font that we are using for our tab bar
-  //       ...Icon.Ionicons.font,
-  //       // We include SpaceMono because we use it in HomeScreen.js. Feel free
-  //       // to remove this if you are not using it in your app
-  //       'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
-  //     }),
-  //   ]);
-  // };
-
-  sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-      if ((new Date().getTime() - start) > milliseconds){
-        break;
-      }
-    }
-  }
-
-  showView = () => {
-    this.setState({ isLoadingComplete: 2 });
-  }
-
-  _handleLoadingError = error => {
-    // In this case, you might want to report the error to your error
-    // reporting service, for example Sentry
-    console.warn(error);
-  };
-
-  _handleFinishLoading = () => { 
-    this.setState({ isLoadingComplete: 1 });
-    setTimeout(this.showView,
-      3000);
-  };
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
   },
 });
