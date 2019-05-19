@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, ImageBackground} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import {Router, Stack, Scene} from 'react-native-router-flux';
 import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen';
 
@@ -12,6 +13,19 @@ export default class App extends Component<Props> {
   };
 
   render() {
+    return (
+
+      <Router showNavigationBar={false}>
+        <Stack key="root">
+          <Scene key="login" component={LoginScreen} hideNavBar title="Login" initial />
+          <Scene key="welcome" component={WelcomeScreen} hideNavBar title="Register"  />
+          {/* <Scene key="home" component={Home} /> */}
+        </Stack>
+      </Router>
+
+    );
+
+    /*
     if (this.state.currWindow == 'splash')  //Splash
     {
       this.splashScreenTimer();
@@ -42,10 +56,11 @@ export default class App extends Component<Props> {
     {
       
     }
+    */
   }
 
   splashScreenTimer = () => {
-    setTimeout(function(){this.viewChangeLogin()}, 3000);
+    setTimeout(function () { this.viewChangeLogin() }, 3000);
   }
 
   viewChangeLogin = () => {

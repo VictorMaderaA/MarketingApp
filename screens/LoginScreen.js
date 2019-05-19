@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { GoogleSignin, GoogleSigninButton, statusCodes } from 'react-native-google-signin';
+import { Actions } from 'react-native-router-flux';
 
 export default class LoginScreen extends Component {
 
@@ -42,6 +43,7 @@ export default class LoginScreen extends Component {
       try{
         const userInfo = await GoogleSignin.signIn();
         console.log(userInfo);
+        Actions.welcome({userInfo: userInfo});
       } catch(e){
         console.log(e);
       }

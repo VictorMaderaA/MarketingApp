@@ -12,6 +12,10 @@ export default class HomeScreen extends Component {
     header: null,
   };
 
+  componentDidMount(){
+    console.log("From welcome", this.props.userInfo)
+  }
+
   render() {
     return (
       <View style={styles.container}>
