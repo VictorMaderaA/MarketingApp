@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, ImageBackground} from 'react-native';
+import { Platform, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import {Router, Stack, Scene} from 'react-native-router-flux';
 import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen';
+import StackScreen from './screens/StackScreen';
 import CounterScreen from './screens/CounterScreen';
 import MainScreen from './screens/MainScreen';
 
@@ -14,6 +16,19 @@ export default class App extends Component<Props> {
   };
 
   render() {
+    return (
+
+      <Router showNavigationBar={false}>
+        <Stack key="root">
+          <Scene key="login" component={LoginScreen} hideNavBar title="Login"  />
+          <Scene key="welcome" component={WelcomeScreen} hideNavBar title="Register"  />
+          <Scene key="stack" component={StackScreen} hideNavBar title="Stack" initial/>
+        </Stack>
+      </Router>
+
+    );
+
+    /*
     if (this.state.currWindow == 'splash')  //Splash
     {
       this.splashScreenTimer();
@@ -49,6 +64,7 @@ export default class App extends Component<Props> {
         <MainScreen parent={this}/>
       );
     }
+    */
   }
 
   splashScreenTimer = () => {
@@ -62,8 +78,6 @@ export default class App extends Component<Props> {
       console.log("Selected date is NOT in the past");
       setTimeout(function(){this.viewChangeTimer()}.bind(this), 3000);
     }
-
-    
   }
 
   viewChangeLogin = () => {
