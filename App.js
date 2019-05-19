@@ -3,6 +3,7 @@ import { Platform, StyleSheet, Text, View, ImageBackground } from 'react-native'
 import {Router, Stack, Scene} from 'react-native-router-flux';
 import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen';
+import StackScreen from './screens/StackScreen';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -17,9 +18,9 @@ export default class App extends Component<Props> {
 
       <Router showNavigationBar={false}>
         <Stack key="root">
-          <Scene key="login" component={LoginScreen} hideNavBar title="Login" initial />
+          <Scene key="login" component={LoginScreen} hideNavBar title="Login"  />
           <Scene key="welcome" component={WelcomeScreen} hideNavBar title="Register"  />
-          {/* <Scene key="home" component={Home} /> */}
+          <Scene key="stack" component={StackScreen} hideNavBar title="Stack" initial/>
         </Stack>
       </Router>
 
