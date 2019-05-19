@@ -68,7 +68,7 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.titleText}>Sign Up.</Text>
+        <Text style={styles.titleText}>Regístrate.</Text>
 
         {/* <TouchableOpacity
           style={styles.roundedButtonFaceBook}
@@ -90,7 +90,7 @@ export default class LoginScreen extends Component {
             activeOpacity={.5}
             onPress={this.selectGmail}
           >
-            <Text style={styles.buttonText}> Using Googel Acount </Text>
+            <Text style={styles.buttonText}>Con google</Text>
           </TouchableOpacity>
 
         {/* <TouchableOpacity

@@ -67,8 +67,8 @@ export default class CounterScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.numberText}>{this.days > 0 ? this.days : null}</Text>
-                <Text style={styles.subText}>{this.days > 0 ? 'dias' : null}</Text>
+                {/* <Text style={styles.numberText}>{this.days > 0 ? this.days : null}</Text>
+                <Text style={styles.subText}>{this.days > 0 ? 'dias' : null}</Text> */}
 
                 <Text style={styles.numberText}>{(this.hours > 0 || this.days > 0) ? this.hours : null}</Text>
                 <Text style={styles.subText}>{(this.hours > 0 || this.days > 0) ? 'horas' : null}</Text>

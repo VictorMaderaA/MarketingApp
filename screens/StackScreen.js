@@ -125,9 +125,7 @@ export default class StackScreen extends Component {
            ref={swiper => {
             this.swiper = swiper
           }}
-            cards={userCards
-              // ['DO', 'MORE', 'OF', 'WHAT', 'MAKES', 'YOU', 'HAPPY']
-            }
+            cards={userCards}
             renderCard={this.renderCard}
             onSwiped={(cardIndex) => { console.log(cardIndex) }}
             onSwipedLeft={this.passButton}

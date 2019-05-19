@@ -11,24 +11,22 @@ type Props = {};
 export default class App extends Component<Props> {
 
   state = {
-    currWindow: 'main',
+    currWindow: 'splash',
     gender: null,
   };
 
-  render() {
-    return (
+  render() {    
 
-      <Router showNavigationBar={false}>
-        <Stack key="root">
-          <Scene key="login" component={LoginScreen} hideNavBar title="Login"  />
-          <Scene key="welcome" component={WelcomeScreen} hideNavBar title="Register"  />
-          <Scene key="stack" component={StackScreen} hideNavBar title="Stack" initial/>
-        </Stack>
-      </Router>
+    // return (
+    //   <Router showNavigationBar={true}>
+    //     <Stack key="root">
+    //       <Scene key="login" component={LoginScreen} hideNavBar title="Login"  />
+    //       <Scene key="welcome" component={WelcomeScreen} hideNavBar title="Register"  />
+    //       <Scene key="stack" component={StackScreen} hideNavBar title="Stack" initial/>
+    //     </Stack>
+    //   </Router>
+    // );
 
-    );
-
-    /*
     if (this.state.currWindow == 'splash')  //Splash
     {
       this.splashScreenTimer();
@@ -61,10 +59,22 @@ export default class App extends Component<Props> {
     else if (this.state.currWindow == 'main')//MainPage
     {
       return (
-        <MainScreen parent={this}/>
+        <MainScreen parent={this} gender={this.state.gender}/>
       );
     }
-    */
+    else 
+    {
+      return (
+        <Router showNavigationBar={true}>
+          <Stack key="root">
+            <Scene key="login" component={LoginScreen} hideNavBar title="Login"  />
+            <Scene key="welcome" component={WelcomeScreen} hideNavBar title="Register"  />
+            <Scene key="stack" component={StackScreen} hideNavBar title="Stack" initial/>
+          </Stack>
+        </Router>
+      );
+    }
+    
   }
 
   splashScreenTimer = () => {

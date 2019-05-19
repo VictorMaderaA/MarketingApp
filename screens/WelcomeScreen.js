@@ -26,15 +26,15 @@ export default class WelcomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.titleText}>Welcome.</Text>
-        <Text style={styles.subTitleText}>Are you?</Text>
+        <Text style={styles.titleText}>Bienvenido.</Text>
+        <Text style={styles.subTitleText}>Eres tú?</Text>
         
         <TouchableOpacity
             style={styles.roundedButton}
             activeOpacity = { .5 }
             onPress={ this.selectMale }
             > 
-                <Text style={styles.buttonText}> Male </Text>
+                <Text style={styles.buttonText}> Hombre </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -42,7 +42,7 @@ export default class WelcomeScreen extends Component {
             activeOpacity = { .5 }
             onPress={ this.selectFemale }
             > 
-                <Text style={styles.buttonText}> Female </Text>
+                <Text style={styles.buttonText}> Mujer </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -50,7 +50,7 @@ export default class WelcomeScreen extends Component {
             activeOpacity = { .5 }
             onPress={ this.selectOther }
             > 
-                <Text style={styles.buttonText}> Other </Text>
+                <Text style={styles.buttonText}> Otro </Text>
         </TouchableOpacity>
 
       </View>
@@ -79,7 +79,7 @@ export default class WelcomeScreen extends Component {
     } catch (e) {
       // saving error
     }
-    this.props.parent.viewChangeHome();
+    this.props.parent.viewChangeMainScreen();
   }
 
   getData = async () => {
@@ -88,7 +88,7 @@ export default class WelcomeScreen extends Component {
       if(value !== null) {
         console.log('Saved gender ' + value)
         this.props.parent.setState({ gender: value });
-        this.props.parent.viewChangeHome();
+        this.props.parent.viewChangeMainScreen();
       }
     } catch(e) {
       // error reading value
