@@ -7,8 +7,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "hoist-non-react-statics": "^3.3.0",
     "react": "16.8.3",
     "react-native": "0.59.8",
+    "react-native-google-signin": "^2.0.0",
     "react-native-responsive-dimensions": "^2.0.1",
     "react-navigation": "^3.11.0"
   },

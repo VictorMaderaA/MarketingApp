@@ -7,7 +7,7 @@ type Props = {};
 export default class App extends Component<Props> {
 
   state = {
-    currWindow: 'splash',
+    currWindow: 'login',
     gender: null,
   };
 
