@@ -3,13 +3,13 @@ import {StyleSheet, View, ImageBackground} from 'react-native';
 import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import CounterScreen from './screens/CounterScreen';
-import ChatHomeScreen from './screens/ChatHomeScreen';
+import MainScreen from './screens/MainScreen';
 
 type Props = {};
 export default class App extends Component<Props> {
 
   state = {
-    currWindow: 'splash',
+    currWindow: 'main',
     gender: null,
   };
 
@@ -43,10 +43,10 @@ export default class App extends Component<Props> {
         <CounterScreen parent={this}/>
       );
     }    
-    else if (this.state.currWindow == 'chatHome')//MainPage
+    else if (this.state.currWindow == 'main')//MainPage
     {
       return (
-        <ChatHomeScreen parent={this}/>
+        <MainScreen parent={this}/>
       );
     }
   }
@@ -82,8 +82,8 @@ export default class App extends Component<Props> {
     this.setState({ currWindow: 'timer' })
   }
 
-  viewChangeChatHome = () => {
-    this.setState({ currWindow: 'chatHome' })
+  viewChangeMainScreen = () => {
+    this.setState({ currWindow: 'main' })
   }
 
 

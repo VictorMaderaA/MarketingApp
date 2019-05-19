@@ -2,9 +2,10 @@ import React from 'react';
 import { AppRegistry, StyleSheet, View, Text, ListView, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { fetch } from 'fetch';
+import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2})
-export default class ChatHomeScreen extends React.Component {
+export default class Chats extends React.Component {
 
   constructor(props) {
     super(props)
@@ -16,18 +17,11 @@ export default class ChatHomeScreen extends React.Component {
 
   render() {
     return (
-        <View style={styles.mainContainer}>
-          <View style={styles.headerContainer}>
-          
-          </View>
-          <View style={styles.contentContainer}>
-            <ListView
+        <ListView
               initialListSize={5}
               enableEmptySections={true}
               dataSource={this.state.peopleDataSource}
-              renderRow={(person) => { return this.renderPersonRow(person) }} />
-              </View>
-        </View>
+              renderRow={(person) => { return this.renderPersonRow(person) }}/>
       );
   }
 
@@ -46,23 +40,16 @@ export default class ChatHomeScreen extends React.Component {
 
   renderPersonRow(person) {
     return (
-      <View style = {styles.listItemContainer}>
+    <View style = {styles.listItemContainer}>
       <View style= {styles.iconContainer}>
         <Image source={{uri:person.image}} style={styles.initStyle} resizeMode='contain' />
       </View>
       <View style = {styles.callerDetailsContainer}>
         <View style={styles.callerDetailsContainerWrap}>
-        <View style={styles.nameContainer}>
-          <Text>{person.first_name}</Text>
-          <View style={styles.dateContainer}>
-            <Icon name={person.missed ? "call-missed" : "call-received"} size={15} color={person.missed ? "#ed788b" : "#075e54"} />
-            <Text style={{ fontWeight:'400', color:'#666', fontSize:12 }}>{person.date} {person.time}</Text>
+          <View style={styles.nameContainer}>
+            <Text style={styles.nameText}>{person.first_name}</Text>
           </View>
-          </View>
-        <View style={styles.callIconContainer}>
-        <Icon name="phone" color='#075e54' size={23} style={{ padding:5 }} />
         </View>
-      </View>
       </View>
     </View>
    )
@@ -73,7 +60,7 @@ export default class ChatHomeScreen extends React.Component {
 const styles = StyleSheet.create({
   mainContainer: {
      flex: 1,
-     backgroundColor: '#F5FCFF',
+     backgroundColor: '#FFF',
      height: 24
   },
   headerContainer: {
@@ -84,61 +71,41 @@ const styles = StyleSheet.create({
      alignItems:"center",
      paddingRight: 5
   },
-  leftHeaderContainer: {
-     alignItems: "flex-start",
-     flexDirection: "row"
-  },
-  rightHeaderContainer: {
-     alignItems: "flex-end",
-     flexDirection: "row"
-  },
   contentContainer: {
      flex: 6,
-  },
-  logoText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 16,
-    alignItems: "flex-start",
-    marginLeft: 10
   },
   listItemContainer: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    padding: 10
+    padding: 10,
   },
   iconContainer: {
-    flex: 1,
+    flex: 2,
     alignItems: "flex-start"
   },
   callerDetailsContainer: {
-    flex: 4,
+    flex: 5,
     justifyContent: "center",
     borderBottomColor: "rgba(92,94,94,0.5)",
     borderBottomWidth: 0.25
   },
   callerDetailsContainerWrap: {
-    flex: 1,
+    flex: 3,
     alignItems: "center",
     flexDirection: "row"
   },
   nameContainer: {
     alignItems: "flex-start",
-    flex: 1
-  },
-  dateContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
-  callIconContainer: {
-    flex: 1,
-    alignItems: "flex-end"
+    flex: 4
   },
   initStyle: {
     borderRadius: 30,
-    width: 60,
-    height: 60
+    width: 80,
+    height: 80
+  },
+  nameText: {
+    fontSize: responsiveFontSize(4),
+    color: "#222"
   }
  });
