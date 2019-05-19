@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, ImageBackground } from 'react-native';
 import {Router, Stack, Scene} from 'react-native-router-flux';
 import WelcomeScreen from './screens/WelcomeScreen';
