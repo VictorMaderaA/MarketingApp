@@ -3,7 +3,8 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  AsyncStorage
 } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 
@@ -11,6 +12,12 @@ export default class HomeScreen extends Component {
   static navigationOptions = {
     header: null,
   };
+
+  constructor(props)
+  {
+    super(props);
+    this.getData();
+  }
 
   render() {
     return (
@@ -48,21 +55,39 @@ export default class HomeScreen extends Component {
 
 
   selectMale = () => {
-      console.log("Male");
       this.props.parent.setState({ gender: 'Male' });
-      this.props.parent.setState({ isLoadingComplete: 4 });
+      this.storeData('Male');
   }
 
   selectFemale = () => {
-      console.log("Female");
       this.props.parent.setState({ gender: 'Female' });
-      this.props.parent.setState({ isLoadingComplete: 4 });
+      this.storeData('Female');
   }
 
   selectOther = () => {
-      console.log("Other");
       this.props.parent.setState({ gender: 'Other' });
-      this.props.parent.setState({ isLoadingComplete: 4 });
+      this.storeData('Other');
+  }
+
+  storeData = async (gender) => {
+    try {
+      await AsyncStorage.setItem('gender', gender)
+    } catch (e) {
+      // saving error
+    }
+    this.props.parent.viewChangeHome();
+  }
+
+  getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('gender')
+      if(value !== null) {
+        console.log('Saved gender ' + value)
+        this.props.parent.viewChangeHome();
+      }
+    } catch(e) {
+      // error reading value
+    }
   }
 
 

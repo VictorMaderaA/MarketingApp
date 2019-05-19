@@ -3,12 +3,13 @@ import {StyleSheet, View, ImageBackground} from 'react-native';
 import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import CounterScreen from './screens/CounterScreen';
+import HomeScreen from './screens/HomeScreen';
 
 type Props = {};
 export default class App extends Component<Props> {
 
   state = {
-    currWindow: 'login',
+    currWindow: 'splash',
     gender: null,
   };
 
@@ -42,17 +43,19 @@ export default class App extends Component<Props> {
         <CounterScreen parent={this}/>
       );
     }    
-    else if (this.state.currWindow == 4)//MainPage
+    else if (this.state.currWindow == 'home')//MainPage
     {
-      
+      return (
+        <HomeScreen parent={this}/>
+      );
     }
   }
 
   splashScreenTimer = () => {
-    var selectedDate = new Date("June 30, 2019").getTime()
-    var now = new Date();
+    var selectedDate = new Date(2019, 5, 20, 15).getTime()
+    var now = new Date().getTime()
 
-    if (selectedDate > now) {
+    if (selectedDate < now) {
       console.log("Selected date is in the past");
       setTimeout(function(){this.viewChangeLogin()}.bind(this), 3000);
     } else {
@@ -77,6 +80,10 @@ export default class App extends Component<Props> {
 
   viewChangeTimer = () => {
     this.setState({ currWindow: 'timer' })
+  }
+
+  viewChangeHome = () => {
+    this.setState({ currWindow: 'home' })
   }
 
 

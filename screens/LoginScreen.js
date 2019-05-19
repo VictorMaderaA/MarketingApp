@@ -48,6 +48,7 @@ export default class LoginScreen extends Component {
       
       console.log(userInfo);
       this.setState({ userInfo });
+      return userInfo;
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
@@ -59,6 +60,7 @@ export default class LoginScreen extends Component {
         // some other error happened
       }
     }
+    return -1;
   };
 
   render() {
@@ -66,7 +68,7 @@ export default class LoginScreen extends Component {
       <View style={styles.container}>
         <Text style={styles.titleText}>Sign Up.</Text>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.roundedButtonFaceBook}
           activeOpacity={.5}
           onPress={this.selectMale}
@@ -79,15 +81,23 @@ export default class LoginScreen extends Component {
           size={GoogleSigninButton.Size.Wide}
           color={GoogleSigninButton.Color.Dark}
           onPress={this._signIn}
-          disabled={false} />
+          disabled={false} /> */}
+          
+          <TouchableOpacity
+            style={styles.roundedButton}
+            activeOpacity={.5}
+            onPress={this.selectGmail}
+          >
+            <Text style={styles.buttonText}> Using Googel Acount </Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.roundedButton}
           activeOpacity={.5}
           onPress={this.selectOther}
         >
           <Text style={styles.buttonText}> Using Phone Number </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
       </View>
     );
@@ -99,8 +109,13 @@ export default class LoginScreen extends Component {
   }
 
   // TODO - Must have google login
-  selectGmail = () => {
+  selectGmail = async () => {
     this.nextView();
+    var response = await this._signIn();
+    if(response !== -1)
+    {
+      this.nextView();
+    }
   }
 
   selectPhone = () => {
@@ -108,7 +123,7 @@ export default class LoginScreen extends Component {
   }
 
   nextView = () => {
-    this.viewChangeGender();
+    this.props.parent.viewChangeGender();
   }
 
 
