@@ -106,7 +106,7 @@ export default class StackScreen extends Component {
           </View>
           <View style={styles.middle}>
             <Image
-              style={{ width: 40, height: 40 }}
+              style={{ width: '60%', height: '60%' }}
               source={require('../icons/icon_inverted.png')}
             />
           </View>
@@ -143,7 +143,7 @@ export default class StackScreen extends Component {
         <View style={styles.button}>
             <TouchableOpacity onPress={() => this.swiper.swipeLeft()}>
               <Image
-                style={{ width: 40, height: 40 }}
+                style={{ width: 80, height: 80 }}
                 source={require('../icons/pass.png')}
               />
             </TouchableOpacity>
@@ -152,7 +152,7 @@ export default class StackScreen extends Component {
           <View style={styles.button}>
             <TouchableOpacity onPress={this.likeButton}>
               <Image
-                style={{ width: 40, height: 40 }}
+                style={{ width: 80, height: 80 }}
                 source={require('../icons/like.png')}
               />
             </TouchableOpacity>
@@ -161,7 +161,7 @@ export default class StackScreen extends Component {
            <View style={styles.button}>
             <TouchableOpacity onPress={() => this.swiper.swipeRight()}>
               <Image
-                style={{ width: 40, height: 40 }}
+                style={{ width: 80, height: 80 }}
                 source={require('../icons/check.png')}
               />
             </TouchableOpacity>
