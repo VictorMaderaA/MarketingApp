@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 
-export default class HomeScreen extends Component {
+export default class WelcomeScreen extends Component {
   static navigationOptions = {
     header: null,
   };
@@ -83,6 +83,7 @@ export default class HomeScreen extends Component {
       const value = await AsyncStorage.getItem('gender')
       if(value !== null) {
         console.log('Saved gender ' + value)
+        this.props.parent.setState({ gender: value });
         this.props.parent.viewChangeHome();
       }
     } catch(e) {
