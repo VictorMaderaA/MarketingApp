@@ -93,17 +93,6 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
-// Create a variable called keystorePropertiesFile, and initialize it to your
-// keystore.properties file, in the rootProject folder.
-def keystorePropertiesFile = rootProject.file("keystore.properties")
-
-// Initialize a new Properties() object called keystoreProperties.
-def keystoreProperties = new Properties()
-
-// Load your keystore.properties file into the keystoreProperties object.
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-
-
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -113,19 +102,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.tinderuneat"
+        applicationId "com.apperitif"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-    }
-    signingConfigs {
-        config {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
-        }
     }
     splits {
         abi {
@@ -157,10 +138,6 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-vector-icons')
-    implementation project(':react-native-view-overflow')
-    implementation project(':react-native-gesture-handler')
-    implementation project(':react-native-google-signin')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
@@ -172,5 +149,3 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
-
-apply plugin: 'com.google.gms.google-services' // <--- this should be the last line
