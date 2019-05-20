@@ -21,7 +21,7 @@ export default class CounterScreen extends React.Component {
         startDate.setMonth(5);
         startDate = startDate.getTime();
 
-        var endDate   = new Date(2019, 5, 20, 15);
+        var endDate   = new Date(2019, 5, 20, 21, 30);
         var seconds = parseInt((endDate - startDate) / 1000);
         // var msDiff = (new Date("May 25, 2019").getTime() - new Date().getTime());
         this.time = seconds;

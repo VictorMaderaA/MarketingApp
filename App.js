@@ -82,7 +82,7 @@ export default class App extends Component<Props> {
     var now = new Date();
     now.setMonth(5);
     now = now.getTime();
-    var selectedDate = (new Date(2019, 5, 20, 15).getTime() / 1);
+    var selectedDate = (new Date(2019, 5, 20, 21, 30).getTime() / 1);
 
     this.dateValues(selectedDate);
     this.dateValues(now);
