@@ -26,6 +26,7 @@ export default class App extends Component<Props> {
     //     </Stack>
     //   </Router>
     // );
+    console.log(this.state.currWindow)
 
     if (this.state.currWindow == 'splash')  //Splash
     {
@@ -77,10 +78,17 @@ export default class App extends Component<Props> {
     
   }
 
-  splashScreenTimer = () => {
-    var selectedDate = new Date(2019, 5, 20, 15).getTime()
-    var now = new Date().getTime()
+  splashScreenTimer = async () => {
+    var now = new Date();
+    now.setMonth(5);
+    now = now.getTime();
+    var selectedDate = (new Date(2019, 5, 20, 15).getTime() / 1);
 
+    this.dateValues(selectedDate);
+    this.dateValues(now);
+    
+
+    console.log(selectedDate + ' < ' + now + ' ? = '+ (selectedDate<now));
     if (selectedDate < now) {
       console.log("Selected date is in the past");
       setTimeout(function(){this.viewChangeLogin()}.bind(this), 3000);
@@ -89,6 +97,20 @@ export default class App extends Component<Props> {
       setTimeout(function(){this.viewChangeTimer()}.bind(this), 3000);
     }
   }
+
+  dateValues = (date) => {
+
+    var date = new Date(date);
+    var month = date.getMonth();
+    var day = date.getDay();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+
+    console.log(month + '-' + day + ' ' + hour + ':' + minute + ':' + second);
+
+  }
+
 
   viewChangeLogin = () => {
     this.setState({ currWindow: 'login' })

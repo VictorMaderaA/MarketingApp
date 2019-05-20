@@ -14,25 +14,30 @@ export default class CounterScreen extends React.Component {
     minutes = 0;
     seconds = 0;
 
+    interval = null;
+
     componentDidMount() {
         var startDate = new Date();
+        startDate.setMonth(5);
+        startDate = startDate.getTime();
+
         var endDate   = new Date(2019, 5, 20, 15);
-        //var endDate   = new Date(2019, 5, 19, 14,19);
         var seconds = parseInt((endDate - startDate) / 1000);
         // var msDiff = (new Date("May 25, 2019").getTime() - new Date().getTime());
         this.time = seconds;
         this.setState({timeLeft: this.time});
         this.secondsToHms(this.time)
 
-        setInterval(function(){
+        this.interval = setInterval(function(){
             this.dateTimer();
         }.bind(this), 1000);
     }
 
     dateTimer = () => {
-        if((this.seconds <= 0  && this.minutes <= 0 && this.hours <= 0 && this.days <= 0))
+        if(this.seconds <= 0  && this.minutes <= 0 && this.hours <= 0 && this.days <= 0)
         {
-            this.props.parent.viewChangeGender();
+            this.props.parent.viewChangeLogin();
+            clearInterval(this.interval);
         }
         else
         {

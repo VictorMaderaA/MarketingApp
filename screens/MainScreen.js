@@ -1,7 +1,5 @@
 import React from 'react';
 import { AppRegistry, StyleSheet, View, Text, ListView, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import { fetch } from 'fetch';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 import Chats from '../components/Chats';

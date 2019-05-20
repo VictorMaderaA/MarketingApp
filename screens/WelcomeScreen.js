@@ -20,7 +20,7 @@ export default class WelcomeScreen extends Component {
   }
   
   componentDidMount(){
-    console.log("From welcome", this.props.userInfo)
+    
   }
 
   render() {

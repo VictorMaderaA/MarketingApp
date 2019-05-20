@@ -27,23 +27,26 @@ export default class Cards extends React.Component {
     this.getUsers();
   }
 
-  reqParam = 'results=100&nat=es';
+  reqParam = 'results=500&nat=es';
 
   getUsers = async () => {
     this.gender = (this.props.gender)? this.props.gender : await this.getGender();
 
     console.log(this.gender)
     var response; 
-    if(this.gender = 'Male')
+    if(this.gender == 'Male')
     {
+      console.log(1)
       response = await fetch('https://randomuser.me/api/?gender=female&' + this.reqParam); // for male users
     }
     else if(this.gender == 'Female')
     {
-      response = await fetch('https://randomuser.me/api/?gender=male' + this.reqParam); // for female users
+      console.log(2)
+      response = await fetch('https://randomuser.me/api/?gender=male&' + this.reqParam); // for female users
     }
     else
     {
+      console.log(3)
       response = await fetch('https://randomuser.me/api/?' + this.reqParam); // for other users
     }  
     const users = await response.json();
