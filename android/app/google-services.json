@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "589365758929",
+    "firebase_url": "https://tinderuneat-62251.firebaseio.com",
+    "project_id": "tinderuneat-62251",
+    "storage_bucket": "tinderuneat-62251.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589365758929:android:406c448a5cd59269",
+        "android_client_info": {
+          "package_name": "com.tinderuneat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589365758929-2mjbsotnounucbef75vj2g7chgdcnctm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tinderuneat",
+            "certificate_hash": "17d7fde585962942a38685f30167d79db353c1f9"
+          }
+        },
+        {
+          "client_id": "589365758929-7f4u719kntipgcb2dt8ku86f8rtq1n17.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdXW9GPNhRkIiroBCeKkitXw2CNSqBK5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589365758929-7f4u719kntipgcb2dt8ku86f8rtq1n17.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
